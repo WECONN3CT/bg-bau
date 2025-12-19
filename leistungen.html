@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere Leistungen | BG BAU Malerfachbetrieb</title>
+    <meta name="description" content="Entdecken Sie unsere Leistungen: Wandgestaltung, Fassadengestaltung, Trockenbau, Altbausanierung, Innenausbau, Bodenverlegung und WDVS.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Rough Notation for hand-drawn marker effect -->
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+
+    <style>
+        :root {
+            --maler-rot: #8B1E3F;
+            --maler-blau: #1E3A5F;
+            --maler-gelb: #F4A300;
+            --maler-hellblau: #457B9D;
+            --warm-white: #FDFBF7;
+            --cream: #F7F3ED;
+            --soft-gray: #E8E4DE;
+            --text-dark: #2B2B2B;
+            --text-medium: #5A5A5A;
+            --section-padding: clamp(4rem, 10vw, 8rem);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+        }
+
+        p {
+            font-size: clamp(1rem, 1.1vw, 1.15rem);
+            color: var(--text-medium);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background: var(--maler-blau);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--maler-rot);
+            border-radius: 50%;
+            top: 8px;
+            left: 8px;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--maler-gelb);
+            border-radius: 50%;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--maler-blau);
+        }
+
+        .logo-img {
+            height: 120px;
+            width: auto;
+            margin-top: -30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:not(.nav-cta).active {
+            background: rgba(232, 160, 160, 0.85);
+            padding: 0.5rem 0.5rem;
+            margin: 0 -0.5rem;
+            border-radius: 3px;
+        }
+
+
+        .nav-cta {
+            background: var(--maler-blau);
+            color: white !important;
+            padding: 0.85rem 1.8rem !important;
+            border-radius: 50px;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .nav-cta:hover {
+            background: var(--maler-rot);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 3rem 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .page-hero .paint-splatter {
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .page-hero .splatter-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            filter: blur(50px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .page-hero .splatter-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 5%;
+            filter: blur(40px);
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.05); }
+        }
+
+        .page-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--maler-blau);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--soft-gray);
+        }
+
+        .page-hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--maler-rot);
+            border-radius: 50%;
+        }
+
+        .page-hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Marker Effect */
+        .hero-marker-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-marker-wrap #heroMarker {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-marker-wrap .marker-bg {
+            position: absolute;
+            bottom: 0.1em;
+            left: -0.15em;
+            right: -0.15em;
+            height: 0.38em;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Services Detail Section */
+        .services-detail {
+            padding: var(--section-padding) 3rem;
+        }
+
+        .services-detail-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .service-detail-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .service-detail-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-detail-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .service-detail-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--soft-gray);
+        }
+
+        .service-detail-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 50%, rgba(29, 53, 87, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .service-detail-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--text-medium);
+        }
+
+        .service-detail-placeholder svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--maler-hellblau);
+            opacity: 0.6;
+        }
+
+        .service-detail-content {
+            padding: 1rem;
+        }
+
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--soft-gray);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .service-number.num-rot { color: var(--maler-rot); }
+        .service-number.num-blau { color: var(--maler-blau); }
+        .service-number.num-gelb { color: var(--maler-gelb); }
+        .service-number.num-hellblau { color: var(--maler-hellblau); }
+
+        .service-detail-content h2 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-detail-content h2 .icon-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-detail-content h2 .icon-badge svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 1.5;
+        }
+
+        .service-detail-content h2 .icon-badge.rot {
+            background: rgba(230, 57, 70, 0.1);
+        }
+        .service-detail-content h2 .icon-badge.rot svg {
+            stroke: var(--maler-rot);
+        }
+
+        .service-detail-content h2 .icon-badge.blau {
+            background: rgba(29, 53, 87, 0.1);
+        }
+        .service-detail-content h2 .icon-badge.blau svg {
+            stroke: var(--maler-blau);
+        }
+
+        .service-detail-content h2 .icon-badge.gelb {
+            background: rgba(244, 163, 0, 0.12);
+        }
+        .service-detail-content h2 .icon-badge.gelb svg {
+            stroke: var(--maler-gelb);
+        }
+
+        .service-detail-content h2 .icon-badge.hellblau {
+            background: rgba(69, 123, 157, 0.1);
+        }
+        .service-detail-content h2 .icon-badge.hellblau svg {
+            stroke: var(--maler-hellblau);
+        }
+
+        .service-detail-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .service-feature-tag svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--maler-rot);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: var(--section-padding) 3rem;
+            background: linear-gradient(135deg, var(--maler-blau) 0%, #0D1B2A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.15) 0%, transparent 60%);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-cta {
+            background: var(--maler-rot);
+            color: white;
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-cta:hover {
+            background: #E8A0A0;
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand .logo-text {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo-text span {
+            color: var(--maler-gelb);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            max-width: 280px;
+        }
+
+        .footer h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--ease-smooth);
+        }
+
+        .footer-links a:hover {
+            color: #E8A0A0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .social-link:hover {
+            background: var(--maler-rot);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-smooth);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-detail-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-detail-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--warm-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .page-hero {
+                padding: 8rem 1.5rem 4rem;
+                min-height: 50vh;
+            }
+
+            .services-detail {
+                padding: var(--section-padding) 1.5rem;
+            }
+
+            .service-number {
+                font-size: 3.5rem;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <img src="images/BG BAU logo.png" alt="BG BAU Logo" class="logo-img">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Start</a></li>
+            <li><a href="leistungen.html" class="active">Leistungen</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html" class="nav-cta">Anfrage stellen</a></li>
+        </ul>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <div class="paint-splatter splatter-1">
+                <svg viewBox="0 0 100 100">
+                    <path d="M45,8 Q65,3 78,15 Q92,25 85,42 Q95,58 80,72 Q68,88 48,82 Q28,90 15,72 Q5,55 12,38 Q8,18 28,12 Q38,5 45,8 Z" fill="var(--maler-rot)"/>
+                </svg>
+            </div>
+            <div class="paint-splatter splatter-2">
+                <svg viewBox="0 0 100 100">
+                    <path d="M50,5 Q72,8 82,22 Q95,38 85,55 Q92,75 72,82 Q52,95 32,82 Q12,78 10,58 Q2,38 18,22 Q32,5 50,5 Z" fill="var(--maler-blau)"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="page-hero-content reveal">
+            <div class="page-hero-badge">7 Fachbereiche</div>
+            <h1>Unsere <span class="hero-marker-wrap"><span id="heroMarker">Leistungen</span><span class="marker-bg" id="markerBg"></span></span></h1>
+            <p>Von der kreativen Wandgestaltung bis zur energetischen Sanierung - wir bieten Ihnen das komplette Spektrum professioneller Malerarbeiten.</p>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="services-detail">
+        <div class="services-detail-grid">
+
+            <!-- Service 1: Wandgestaltung -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Wandgestaltung Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-rot">01</div>
+                    <h2>
+                        <span class="icon-badge rot">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M2 22h20"/>
+                                <path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l1.09-.55a2 2 0 0 1 1.8 0l4.5 2.25"/>
+                                <path d="m14 10 5.5 11"/>
+                                <path d="m14 10 4-8"/>
+                            </svg>
+                        </span>
+                        Wandgestaltung
+                    </h2>
+                    <p>Verwandeln Sie Ihre Räume in einzigartige Wohlfühloasen. Unsere kreativen Wandtechniken und individuellen Farbkonzepte schaffen Atmosphäre und Persönlichkeit. Von klassisch elegant bis modern ausgefallen - wir setzen Ihre Vorstellungen professionell um.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Tapezierarbeiten
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Spachteltechniken
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Farbberatung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Akzentwände
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Fassadengestaltung -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Fassadengestaltung Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-blau">02</div>
+                    <h2>
+                        <span class="icon-badge blau">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M3 21h18"/>
+                                <path d="M5 21V7l8-4v18"/>
+                                <path d="M19 21V11l-6-4"/>
+                                <path d="M9 9v.01"/>
+                                <path d="M9 12v.01"/>
+                                <path d="M9 15v.01"/>
+                                <path d="M9 18v.01"/>
+                            </svg>
+                        </span>
+                        Fassadengestaltung
+                    </h2>
+                    <p>Der erste Eindruck zählt - und Ihre Fassade ist die Visitenkarte Ihres Hauses. Wir sorgen für einen strahlenden Außenauftritt mit hochwertigen, wetterbeständigen Anstrichen und professioneller Fassadensanierung.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Außenanstriche
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Fassadensanierung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Holzschutz
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Gerüstarbeiten
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Trockenbau -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Trockenbau Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-gelb">03</div>
+                    <h2>
+                        <span class="icon-badge gelb">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18"/>
+                                <path d="M9 21V9"/>
+                            </svg>
+                        </span>
+                        Trockenbau
+                    </h2>
+                    <p>Flexible Raumgestaltung ohne Grenzen. Mit modernen Trockenbausystemen erschaffen wir neue Räume, optimieren Grundrisse und setzen architektonische Akzente - schnell, sauber und kosteneffizient.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Trennwände
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Abgehängte Decken
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Dachausbau
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Schallschutz
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Altbausanierung -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Altbausanierung Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-hellblau">04</div>
+                    <h2>
+                        <span class="icon-badge hellblau">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        Altbausanierung
+                    </h2>
+                    <p>Charme bewahren, Komfort schaffen. Wir hauchen Altbauten neues Leben ein - mit behutsamer Restaurierung, die den historischen Charakter erhält und gleichzeitig moderne Wohnansprüche erfüllt.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Stuckarbeiten
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Denkmalschutz
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Feuchtigkeitssanierung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Holzrestaurierung
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5: Innenausbau -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Innenausbau Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-rot">05</div>
+                    <h2>
+                        <span class="icon-badge rot">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+                            </svg>
+                        </span>
+                        Innenausbau
+                    </h2>
+                    <p>Alles aus einer Hand - von der ersten Idee bis zum fertigen Raum. Unser Komplettservice umfasst Planung, Koordination und Ausführung aller Innenausbauarbeiten für Ihr perfektes Zuhause.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Komplettumbau
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Raumplanung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Einbauschränke
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Türmontage
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 6: Bodenverlegung -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Bodenverlegung Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-blau">06</div>
+                    <h2>
+                        <span class="icon-badge blau">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="3" y="3" width="18" height="18"/>
+                                <path d="M3 9h18"/>
+                                <path d="M3 15h18"/>
+                                <path d="M9 3v18"/>
+                                <path d="M15 3v18"/>
+                            </svg>
+                        </span>
+                        Bodenverlegung
+                    </h2>
+                    <p>Der Boden bildet die Basis Ihres Wohnkomforts. Wir verlegen fachgerecht Laminat, Parkett und Vinyl - für Böden, die nicht nur gut aussehen, sondern auch jahrelang begeistern.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Laminat
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Parkett
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Vinylboden
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Sockelleisten
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 7: WDVS -->
+            <div class="service-detail-item reveal">
+                <div class="service-detail-image">
+                    <div class="service-detail-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>WDVS Bild</span>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <div class="service-number num-gelb">07</div>
+                    <h2>
+                        <span class="icon-badge gelb">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                            </svg>
+                        </span>
+                        WDVS
+                    </h2>
+                    <p>Investieren Sie in die Zukunft - mit professionellen Wärmedämmverbundsystemen. Sparen Sie dauerhaft Heizkosten, steigern Sie den Wohnkomfort und leisten Sie einen Beitrag zum Klimaschutz.</p>
+                    <div class="service-features">
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Energieberatung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Dämmplatten
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Armierung
+                        </span>
+                        <span class="service-feature-tag">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Endbeschichtung
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container reveal">
+            <h2>Ihr Projekt wartet</h2>
+            <p>Lassen Sie uns gemeinsam Ihre Vision verwirklichen. Wir beraten Sie gerne persönlich und erstellen Ihnen ein unverbindliches Angebot.</p>
+            <div class="cta-buttons">
+                <a href="kontakt.html" class="btn btn-cta">
+                    Jetzt Anfragen
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="tel:+49XXXXXXXXXX" class="btn btn-outline">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Anrufen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="images/BG Bau weiß.png" alt="BG BAU Logo" class="footer-logo" style="height: 160px; width: auto;">
+                    <p>Ihr Partner für meisterhafte Malerarbeiten und professionelle Sanierungen. Qualität aus Familienhand.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Leistungen</h4>
+                    <ul class="footer-links">
+                        <li><a href="leistungen.html">Wandgestaltung</a></li>
+                        <li><a href="leistungen.html">Fassadengestaltung</a></li>
+                        <li><a href="leistungen.html">Trockenbau</a></li>
+                        <li><a href="leistungen.html">Altbausanierung</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Unternehmen</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="galerie.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2024 BG BAU - Malerfachbetrieb. Alle Rechte vorbehalten.</span>
+                <span>made by WECONN3CT</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.background = 'var(--maler-gelb)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'var(--maler-rot)';
+            });
+        });
+
+        // Navigation Scroll Effect
+        const nav = document.getElementById('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Hero Marker Animation
+        const markerBg = document.getElementById('markerBg');
+        if (markerBg && typeof RoughNotation !== 'undefined') {
+            const annotation = RoughNotation.annotate(markerBg, {
+                type: 'highlight',
+                color: 'rgba(232, 160, 160, 0.85)',
+                strokeWidth: 2,
+                padding: 0,
+                iterations: 2,
+                animationDuration: 1400,
+                multiline: false
+            });
+
+            setTimeout(() => {
+                annotation.show();
+            }, 500);
+        }
+
+        // Navigation Marker Effect - Rough Notation for hand-drawn look (only for hover, not active)
+        if (typeof RoughNotation !== 'undefined') {
+            const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta):not(.active)');
+
+            navLinks.forEach(link => {
+                const navAnnotation = RoughNotation.annotate(link, {
+                    type: 'highlight',
+                    color: 'rgba(232, 160, 160, 0.85)',
+                    strokeWidth: 1,
+                    padding: [2, 4],
+                    iterations: 1,
+                    animationDuration: 300,
+                    multiline: false
+                });
+
+                link.addEventListener('mouseenter', () => {
+                    navAnnotation.show();
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    navAnnotation.hide();
+                });
+            });
+        }
+    </script>
+</body>
+</html>

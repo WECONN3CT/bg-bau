@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns | BG BAU Malerfachbetrieb</title>
+    <meta name="description" content="Lernen Sie BG BAU kennen - ein Familienbetrieb mit Herz und Handwerk. Seit 2021 Ihr Partner für meisterhafte Malerarbeiten.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Rough Notation -->
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+
+    <style>
+        :root {
+            --maler-rot: #8B1E3F;
+            --maler-blau: #1E3A5F;
+            --maler-gelb: #F4A300;
+            --maler-hellblau: #457B9D;
+            --warm-white: #FDFBF7;
+            --cream: #F7F3ED;
+            --soft-gray: #E8E4DE;
+            --text-dark: #2B2B2B;
+            --text-medium: #5A5A5A;
+            --section-padding: clamp(4rem, 10vw, 8rem);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.2; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+        h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); }
+        p { font-size: clamp(1rem, 1.1vw, 1.15rem); color: var(--text-medium); }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background: var(--maler-blau);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--maler-rot);
+            border-radius: 50%;
+            top: 8px;
+            left: 8px;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--maler-gelb);
+            border-radius: 50%;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text span { color: var(--maler-blau); }
+
+        .logo-img { height: 120px; width: auto; margin-top: -30px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:not(.nav-cta).active {
+            background: rgba(232, 160, 160, 0.85);
+            padding: 0.5rem 0.5rem;
+            margin: 0 -0.5rem;
+            border-radius: 3px;
+        }
+
+
+        .nav-cta {
+            background: var(--maler-blau);
+            color: white !important;
+            padding: 0.85rem 1.8rem !important;
+            border-radius: 50px;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .nav-cta:hover {
+            background: var(--maler-rot);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 3rem 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .page-hero .paint-splatter {
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .page-hero .splatter-1 {
+            width: 300px;
+            height: 300px;
+            top: 15%;
+            left: 10%;
+            filter: blur(50px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .page-hero .splatter-2 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            right: 10%;
+            filter: blur(45px);
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.05); }
+        }
+
+        .page-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--maler-blau);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--soft-gray);
+        }
+
+        .page-hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--maler-rot);
+            border-radius: 50%;
+        }
+
+        .hero-marker-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-marker-wrap #heroMarker {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-marker-wrap .marker-bg {
+            position: absolute;
+            bottom: 0.1em;
+            left: -0.15em;
+            right: -0.15em;
+            height: 0.38em;
+            z-index: 1;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: var(--section-padding) 3rem;
+        }
+
+        .story-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image-main {
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: var(--soft-gray);
+        }
+
+        .story-image-badge {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--maler-blau);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(29, 53, 87, 0.3);
+        }
+
+        .story-image-badge .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--maler-gelb);
+        }
+
+        .story-image-badge span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .story-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--text-medium);
+        }
+
+        .image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--maler-hellblau);
+            opacity: 0.6;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: var(--section-padding) 3rem;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--maler-rot);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--maler-rot);
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s var(--ease-smooth);
+            border: 1px solid var(--soft-gray);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke-width: 1.5;
+        }
+
+        .value-icon.rot { background: rgba(230, 57, 70, 0.1); }
+        .value-icon.rot svg { stroke: var(--maler-rot); }
+        .value-icon.blau { background: rgba(29, 53, 87, 0.1); }
+        .value-icon.blau svg { stroke: var(--maler-blau); }
+        .value-icon.gelb { background: rgba(244, 163, 0, 0.12); }
+        .value-icon.gelb svg { stroke: var(--maler-gelb); }
+        .value-icon.hellblau { background: rgba(69, 123, 157, 0.1); }
+        .value-icon.hellblau svg { stroke: var(--maler-hellblau); }
+
+        .value-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: var(--section-padding) 3rem;
+        }
+
+        .team-intro {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .team-intro-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .team-stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 16px;
+        }
+
+        .team-stat .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--maler-blau);
+            line-height: 1;
+        }
+
+        .team-stat .number span {
+            color: var(--maler-rot);
+        }
+
+        .team-stat .label {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: var(--section-padding) 3rem;
+            background: var(--maler-blau);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244, 163, 0, 0.1) 0%, transparent 60%);
+        }
+
+        .timeline-section .section-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-section .section-header h2 {
+            color: white;
+        }
+
+        .timeline-section .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .timeline-section .section-label {
+            color: var(--maler-gelb);
+        }
+
+        .timeline-section .section-label::before,
+        .timeline-section .section-label::after {
+            background: #E8A0A0;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            padding-right: 3rem;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-left: 3rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--maler-gelb);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #E8A0A0;
+            border-radius: 50%;
+            border: 4px solid var(--maler-blau);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA */
+        .cta {
+            padding: var(--section-padding) 3rem;
+            background: var(--cream);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--maler-blau);
+            color: white;
+            box-shadow: 0 8px 30px rgba(29, 53, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--maler-rot);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--soft-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--maler-blau);
+            background: white;
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand .logo-text {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo-text span {
+            color: var(--maler-gelb);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            max-width: 280px;
+        }
+
+        .footer h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--ease-smooth);
+        }
+
+        .footer-links a:hover {
+            color: #E8A0A0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .social-link:hover {
+            background: var(--maler-rot);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-smooth);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .story-container,
+            .team-intro {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--warm-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .page-hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .story-section,
+            .values-section,
+            .team-section,
+            .timeline-section,
+            .cta {
+                padding: var(--section-padding) 1.5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+                padding-left: 2rem;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                margin-left: 10px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <img src="images/BG BAU logo.png" alt="BG BAU Logo" class="logo-img">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Start</a></li>
+            <li><a href="leistungen.html">Leistungen</a></li>
+            <li><a href="ueber-uns.html" class="active">Über uns</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html" class="nav-cta">Anfrage stellen</a></li>
+        </ul>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <div class="paint-splatter splatter-1">
+                <svg viewBox="0 0 100 100">
+                    <path d="M48,6 Q68,10 78,25 Q90,42 82,60 Q88,78 65,85 Q42,92 25,75 Q8,62 15,42 Q10,22 32,12 Q42,5 48,6 Z" fill="var(--maler-gelb)"/>
+                </svg>
+            </div>
+            <div class="paint-splatter splatter-2">
+                <svg viewBox="0 0 100 100">
+                    <path d="M45,8 Q65,3 78,15 Q92,25 85,42 Q95,58 80,72 Q68,88 48,82 Q28,90 15,72 Q5,55 12,38 Q8,18 28,12 Q38,5 45,8 Z" fill="var(--maler-hellblau)"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="page-hero-content reveal">
+            <div class="page-hero-badge">Familienbetrieb seit 2021</div>
+            <h1>Über <span class="hero-marker-wrap"><span id="heroMarker">uns</span><span class="marker-bg" id="markerBg"></span></span></h1>
+            <p>Lernen Sie das Team hinter BG BAU kennen - Menschen mit Leidenschaft für Farbe, Qualität und Ihr Zuhause.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-image reveal">
+                <div class="story-image-main">
+                    <div class="image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Inhaber Bayram Gündoktor</span>
+                    </div>
+                </div>
+                <div class="story-image-badge">
+                    <span class="number">4+</span>
+                    <span>Jahre<br>Erfahrung</span>
+                </div>
+            </div>
+
+            <div class="story-content reveal">
+                <h2>Unsere Geschichte</h2>
+                <p>Was 2021 als Vision begann, ist heute ein etablierter Malerfachbetrieb mit einem Team aus sechs engagierten Fachleuten. Unter der Führung von Inhaber Bayram Gündoktor haben wir uns einen Namen für Qualität, Zuverlässigkeit und persönliche Betreuung gemacht.</p>
+                <p>Unser Weg begann mit der Überzeugung, dass gutes Handwerk mehr ist als nur Farbe an der Wand - es ist die Kunst, Räume in Lebensräume zu verwandeln. Diese Philosophie tragen wir in jedes einzelne Projekt.</p>
+                <p>Heute sind wir stolz auf über 100 zufriedene Kunden und unzählige Projekte, die wir mit Hingabe und Präzision umgesetzt haben. Doch für uns zählt nicht nur das Ergebnis - der Weg dorthin, die persönliche Beratung und das Vertrauen unserer Kunden sind uns ebenso wichtig.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header reveal">
+            <span class="section-label">Was uns antreibt</span>
+            <h2>Unsere Werte</h2>
+            <p>Diese Grundsätze leiten unser tägliches Handeln und bilden das Fundament unserer Arbeit.</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card reveal">
+                <div class="value-icon rot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3>Qualität</h3>
+                <p>Wir verwenden nur hochwertige Materialien und arbeiten nach höchsten handwerklichen Standards.</p>
+            </div>
+
+            <div class="value-card reveal">
+                <div class="value-icon blau">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3>Einsatz</h3>
+                <p>Wir geben bei jedem Projekt alles. Mit vollem Engagement und Leidenschaft für perfekte Ergebnisse.</p>
+            </div>
+
+            <div class="value-card reveal">
+                <div class="value-icon gelb">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>Persönlich</h3>
+                <p>Bei uns sind Sie keine Nummer. Wir nehmen uns Zeit für Ihre Wünsche und beraten Sie individuell.</p>
+            </div>
+
+            <div class="value-card reveal">
+                <div class="value-icon hellblau">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                    </svg>
+                </div>
+                <h3>Sauberkeit</h3>
+                <p>Wir hinterlassen Ihre Räume so, wie wir sie vorfinden möchten - sauber und ordentlich.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-intro">
+            <div class="team-intro-content reveal">
+                <h2>Unser Team</h2>
+                <p>Sechs Fachleute, eine Mission: Ihre Räume zum Strahlen zu bringen. Unser eingespieltes Team vereint Erfahrung, Kreativität und handwerkliches Können. Gemeinsam meistern wir jede Herausforderung.</p>
+                <p>Unter der Leitung von Inhaber Bayram Gündoktor arbeiten bei uns qualifizierte Maler und Lackierer, die ihr Handwerk verstehen und mit Leidenschaft ausüben.</p>
+            </div>
+
+            <div class="team-stats reveal">
+                <div class="team-stat">
+                    <div class="number"><span class="counter" data-target="6">0</span></div>
+                    <div class="label">Teammitglieder</div>
+                </div>
+                <div class="team-stat">
+                    <div class="number"><span class="counter" data-target="100">0</span><span>+</span></div>
+                    <div class="label">Projekte</div>
+                </div>
+                <div class="team-stat">
+                    <div class="number"><span class="counter" data-target="100">0</span><span>%</span></div>
+                    <div class="label">Einsatz</div>
+                </div>
+                <div class="team-stat">
+                    <div class="number"><span class="counter" data-target="7">0</span></div>
+                    <div class="label">Fachbereiche</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="section-header reveal">
+            <span class="section-label">Unsere Reise</span>
+            <h2>Meilensteine</h2>
+            <p>Von der Gründung bis heute - wichtige Stationen unserer Entwicklung.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <div class="timeline-year">2021</div>
+                    <h3>Gründung</h3>
+                    <p>Bayram Gündoktor gründet BG BAU mit der Vision, Qualitätshandwerk und persönlichen Service zu vereinen.</p>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content"></div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-content"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2022</div>
+                    <h3>Wachstum</h3>
+                    <p>Das Team wächst auf vier Mitarbeiter. Erste große Sanierungsprojekte werden erfolgreich abgeschlossen.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <h3>Expansion</h3>
+                    <p>Erweiterung des Leistungsspektrums um Trockenbau und WDVS. Das Team umfasst nun sechs Fachleute.</p>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content"></div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-content"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <h3>Heute</h3>
+                    <p>Über 100 zufriedene Kunden und ein etablierter Ruf für Qualität und Zuverlässigkeit in der Region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container reveal">
+            <h2>Lernen Sie uns kennen</h2>
+            <p>Wir freuen uns darauf, Sie persönlich zu beraten und Ihr Projekt zu besprechen. Kontaktieren Sie uns für ein unverbindliches Gespräch.</p>
+            <div class="cta-buttons">
+                <a href="kontakt.html" class="btn btn-primary">
+                    Kontakt aufnehmen
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="galerie.html" class="btn btn-secondary">
+                    Unsere Projekte ansehen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="images/BG Bau weiß.png" alt="BG BAU Logo" class="footer-logo" style="height: 160px; width: auto;">
+                    <p>Ihr Partner für meisterhafte Malerarbeiten und professionelle Sanierungen. Qualität aus Familienhand.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Leistungen</h4>
+                    <ul class="footer-links">
+                        <li><a href="leistungen.html">Wandgestaltung</a></li>
+                        <li><a href="leistungen.html">Fassadengestaltung</a></li>
+                        <li><a href="leistungen.html">Trockenbau</a></li>
+                        <li><a href="leistungen.html">Altbausanierung</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Unternehmen</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="galerie.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2024 BG BAU - Malerfachbetrieb. Alle Rechte vorbehalten.</span>
+                <span>made by WECONN3CT</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const cursor = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.background = 'var(--maler-gelb)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'var(--maler-rot)';
+            });
+        });
+
+        // Navigation Scroll Effect
+        const nav = document.getElementById('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const counterAnimated = new Set();
+
+        const animateCounter = (counter) => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 1500;
+            const startTime = performance.now();
+
+            const updateCounter = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.round(target * progress);
+
+                counter.textContent = current;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const checkCounters = () => {
+            counters.forEach(counter => {
+                if (counterAnimated.has(counter)) return;
+
+                const rect = counter.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    counterAnimated.add(counter);
+                    animateCounter(counter);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', checkCounters);
+        checkCounters();
+
+        const markerBg = document.getElementById('markerBg');
+        if (markerBg && typeof RoughNotation !== 'undefined') {
+            const annotation = RoughNotation.annotate(markerBg, {
+                type: 'highlight',
+                color: 'rgba(232, 160, 160, 0.85)',
+                strokeWidth: 2,
+                padding: 0,
+                iterations: 2,
+                animationDuration: 1400,
+                multiline: false
+            });
+
+            setTimeout(() => {
+                annotation.show();
+            }, 500);
+        }
+
+        // Navigation Marker Effect - Rough Notation for hand-drawn look (only for hover, not active)
+        if (typeof RoughNotation !== 'undefined') {
+            const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta):not(.active)');
+
+            navLinks.forEach(link => {
+                const navAnnotation = RoughNotation.annotate(link, {
+                    type: 'highlight',
+                    color: 'rgba(232, 160, 160, 0.85)',
+                    strokeWidth: 1,
+                    padding: [2, 4],
+                    iterations: 1,
+                    animationDuration: 300,
+                    multiline: false
+                });
+
+                link.addEventListener('mouseenter', () => {
+                    navAnnotation.show();
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    navAnnotation.hide();
+                });
+            });
+        }
+    </script>
+</body>
+</html>
