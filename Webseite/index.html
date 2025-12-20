@@ -152,6 +152,11 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
+        .nav.menu-open {
+            background: var(--warm-white) !important;
+            backdrop-filter: none !important;
+        }
+
         .nav-logo {
             display: flex;
             align-items: center;
@@ -2078,6 +2083,7 @@
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+            nav.classList.toggle('menu-open');
         });
 
         // Close menu when clicking a link
@@ -2085,6 +2091,7 @@
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
+                nav.classList.remove('menu-open');
             });
         });
 
