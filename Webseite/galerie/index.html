@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt | BG BAU Malerfachbetrieb</title>
-    <meta name="description" content="Kontaktieren Sie BG BAU für ein unverbindliches Angebot. Wir beraten Sie gerne persönlich zu Ihrem Projekt.">
+    <title>Galerie & Referenzen | BG BAU Malerfachbetrieb</title>
+    <meta name="description" content="Entdecken Sie unsere Referenzen und Projektgalerie. Überzeugen Sie sich selbst von der Qualität unserer Malerarbeiten.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,21 +194,21 @@
         }
 
         .page-hero .splatter-1 {
-            width: 280px;
-            height: 280px;
-            top: 10%;
-            right: 15%;
-            filter: blur(50px);
+            width: 350px;
+            height: 350px;
+            top: 5%;
+            right: 5%;
+            filter: blur(55px);
             animation: float 8s ease-in-out infinite;
         }
 
         .page-hero .splatter-2 {
-            width: 220px;
-            height: 220px;
-            bottom: 20%;
-            left: 10%;
-            filter: blur(45px);
-            animation: float 7s ease-in-out infinite 1s;
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            left: 8%;
+            filter: blur(40px);
+            animation: float 6s ease-in-out infinite 1s;
         }
 
         @keyframes float {
@@ -264,331 +264,229 @@
             z-index: 1;
         }
 
-        /* Contact Section */
-        .contact-section {
+        /* Gallery Section */
+        .gallery-section {
             padding: 3rem 3rem var(--section-padding);
         }
 
-        .contact-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-        }
-
-        /* Contact Info */
-        .contact-info {
-            padding: 2rem 0;
-        }
-
-        .contact-info h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info > p {
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .contact-cards {
+        /* Filter Buttons */
+        .gallery-filters {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-            padding: 1.5rem;
-            background: var(--cream);
-            border-radius: 16px;
-            transition: all 0.3s var(--ease-smooth);
-        }
-
-        .contact-card:hover {
-            background: white;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateX(10px);
-        }
-
-        .contact-card-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-card-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 1.5;
-        }
-
-        .contact-card-icon.rot {
-            background: rgba(230, 57, 70, 0.1);
-        }
-        .contact-card-icon.rot svg {
-            stroke: var(--maler-rot);
-        }
-
-        .contact-card-icon.blau {
-            background: rgba(29, 53, 87, 0.1);
-        }
-        .contact-card-icon.blau svg {
-            stroke: var(--maler-blau);
-        }
-
-        .contact-card-icon.gelb {
-            background: rgba(244, 163, 0, 0.12);
-        }
-        .contact-card-icon.gelb svg {
-            stroke: var(--maler-gelb);
-        }
-
-        .contact-card-icon.hellblau {
-            background: rgba(69, 123, 157, 0.1);
-        }
-        .contact-card-icon.hellblau svg {
-            stroke: var(--maler-hellblau);
-        }
-
-        .contact-card-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-card-content p {
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card-content a {
-            color: var(--maler-blau);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.05rem;
-            transition: color 0.3s var(--ease-smooth);
-        }
-
-        .contact-card-content a:hover {
-            color: var(--maler-rot);
-        }
-
-        /* Opening Hours */
-        .opening-hours {
-            margin-top: 2.5rem;
-            padding: 2rem;
-            background: var(--maler-blau);
-            border-radius: 20px;
-            color: white;
-        }
-
-        .opening-hours h3 {
-            color: white;
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .opening-hours h3 svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--maler-gelb);
-        }
-
-        .hours-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .hours-item {
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hours-item:last-child {
-            border-bottom: none;
-        }
-
-        .hours-item .day {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .hours-item .time {
-            color: var(--maler-gelb);
-            font-weight: 500;
-        }
-
-        /* Contact Form */
-        .contact-form-wrapper {
-            background: white;
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--soft-gray);
-        }
-
-        .contact-form-wrapper h2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-form-wrapper > p {
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        .form-group label span {
-            color: var(--maler-rot);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 1rem 1.25rem;
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
             border: 2px solid var(--soft-gray);
-            border-radius: 12px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-smooth);
-            background: var(--warm-white);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--maler-blau);
             background: white;
-            box-shadow: 0 0 0 4px rgba(29, 53, 87, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235A5A5A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1.25rem;
-            padding-right: 3rem;
-        }
-
-        .form-checkbox {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .form-checkbox input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 0.2rem;
-            accent-color: var(--maler-blau);
-        }
-
-        .form-checkbox label {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            line-height: 1.5;
-        }
-
-        .form-checkbox label a {
-            color: var(--maler-blau);
-            text-decoration: underline;
-        }
-
-        .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1.25rem 2.5rem;
-            background: var(--maler-blau);
-            color: white;
-            border: none;
             border-radius: 50px;
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
             cursor: pointer;
             transition: all 0.3s var(--ease-smooth);
-            box-shadow: 0 8px 30px rgba(29, 53, 87, 0.3);
         }
 
-        .btn-submit:hover {
-            background: var(--maler-rot);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(230, 57, 70, 0.3);
+        .filter-btn:hover {
+            border-color: var(--maler-blau);
+            background: var(--cream);
         }
 
-        .btn-submit svg {
-            width: 20px;
-            height: 20px;
+        .filter-btn.active {
+            background: var(--maler-blau);
+            border-color: var(--maler-blau);
+            color: white;
         }
 
-        /* Map Section */
-        .map-section {
-            padding: 0 3rem var(--section-padding);
-        }
-
-        .map-container {
-            max-width: 1300px;
+        /* Masonry Gallery */
+        .gallery-grid {
+            max-width: 1400px;
             margin: 0 auto;
-            border-radius: 24px;
+            columns: 3;
+            column-gap: 1.5rem;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
             overflow: hidden;
-            height: 400px;
+            position: relative;
             background: var(--soft-gray);
+            cursor: pointer;
+            transition: all 0.4s var(--ease-smooth);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .gallery-placeholder {
+            aspect-ratio: var(--aspect, 4/3);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
+            color: var(--text-medium);
+            padding: 2rem;
         }
 
-        .map-container svg {
-            width: 48px;
-            height: 48px;
+        .gallery-placeholder svg {
+            width: 40px;
+            height: 40px;
             stroke: var(--maler-hellblau);
             opacity: 0.5;
         }
 
-        .map-container span {
-            color: var(--text-medium);
+        .gallery-placeholder span {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(29, 53, 87, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s var(--ease-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-overlay span {
+            color: var(--maler-gelb);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Category Colors */
+        .gallery-item[data-category="wandgestaltung"] .gallery-overlay {
+            background: linear-gradient(to top, rgba(230, 57, 70, 0.85) 0%, transparent 60%);
+        }
+
+        .gallery-item[data-category="fassade"] .gallery-overlay {
+            background: linear-gradient(to top, rgba(29, 53, 87, 0.9) 0%, transparent 60%);
+        }
+
+        .gallery-item[data-category="trockenbau"] .gallery-overlay {
+            background: linear-gradient(to top, rgba(244, 163, 0, 0.85) 0%, transparent 60%);
+        }
+
+        .gallery-item[data-category="sanierung"] .gallery-overlay {
+            background: linear-gradient(to top, rgba(69, 123, 157, 0.9) 0%, transparent 60%);
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        /* Stats Bar */
+        .gallery-stats {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2.5rem;
+            background: var(--maler-blau);
+            border-radius: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--maler-gelb);
+            line-height: 1;
+        }
+
+        .stat-number span {
+            color: white;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA */
+        .cta {
+            padding: var(--section-padding) 3rem;
+            background: var(--cream);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--maler-blau);
+            color: white;
+            box-shadow: 0 8px 30px rgba(29, 53, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--maler-rot);
+            transform: translateY(-3px);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* Footer */
@@ -702,9 +600,12 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .gallery-grid {
+                columns: 2;
+            }
+
+            .gallery-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-main {
@@ -733,6 +634,8 @@
 
             .nav-links.active {
                 display: flex;
+                background: var(--warm-white);
+                z-index: 1000;
             }
 
             .nav-links a {
@@ -759,17 +662,21 @@
                 padding: 8rem 1.5rem 3rem;
             }
 
-            .contact-section,
-            .map-section {
+            .gallery-section {
                 padding: 2rem 1.5rem var(--section-padding);
             }
 
-            .contact-form-wrapper {
-                padding: 2rem 1.5rem;
+            .gallery-grid {
+                columns: 1;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
+            .gallery-stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
 
             .footer-main {
@@ -804,8 +711,8 @@
             <li><a href="/">Start</a></li>
             <li><a href="/leistungen/">Leistungen</a></li>
             <li><a href="/ueber-uns/">Über uns</a></li>
-            <li><a href="/galerie/">Galerie</a></li>
-            <li><a href="/kontakt/" class="active">Kontakt</a></li>
+            <li><a href="/galerie/" class="active">Galerie</a></li>
+            <li><a href="/kontakt/">Kontakt</a></li>
             <li><a href="/kontakt/" class="nav-cta">Anfrage stellen</a></li>
         </ul>
 
@@ -821,180 +728,252 @@
         <div class="page-hero-bg">
             <div class="paint-splatter splatter-1">
                 <svg viewBox="0 0 100 100">
-                    <path d="M42,10 Q62,5 75,18 Q90,32 82,52 Q88,72 68,82 Q48,92 28,78 Q10,68 15,48 Q8,28 25,15 Q35,8 42,10 Z" fill="var(--maler-blau)"/>
+                    <path d="M45,8 Q65,3 78,15 Q92,25 85,42 Q95,58 80,72 Q68,88 48,82 Q28,90 15,72 Q5,55 12,38 Q8,18 28,12 Q38,5 45,8 Z" fill="var(--maler-rot)"/>
                 </svg>
             </div>
             <div class="paint-splatter splatter-2">
                 <svg viewBox="0 0 100 100">
-                    <path d="M48,6 Q68,10 78,25 Q90,42 82,60 Q88,78 65,85 Q42,92 25,75 Q8,62 15,42 Q10,22 32,12 Q42,5 48,6 Z" fill="var(--maler-rot)"/>
+                    <path d="M50,5 Q72,8 82,22 Q95,38 85,55 Q92,75 72,82 Q52,95 32,82 Q12,78 10,58 Q2,38 18,22 Q32,5 50,5 Z" fill="var(--maler-gelb)"/>
                 </svg>
             </div>
         </div>
 
         <div class="page-hero-content reveal">
-            <div class="page-hero-badge">Wir freuen uns auf Sie</div>
-            <h1>Kontaktieren <span class="hero-marker-wrap"><span id="heroMarker">Sie uns</span><span class="marker-bg" id="markerBg"></span></span></h1>
-            <p>Haben Sie Fragen oder möchten ein Projekt besprechen? Wir sind für Sie da und beraten Sie gerne persönlich.</p>
+            <div class="page-hero-badge">100+ Projekte</div>
+            <h1>Unsere <span class="hero-marker-wrap"><span id="heroMarker">Galerie</span><span class="marker-bg" id="markerBg"></span></span></h1>
+            <p>Entdecken Sie eine Auswahl unserer Projekte und überzeugen Sie sich selbst von der Qualität unserer Arbeit.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="contact-container">
-            <!-- Contact Info -->
-            <div class="contact-info reveal">
-                <h2>So erreichen Sie uns</h2>
-                <p>Ob telefonisch, per E-Mail oder persönlich - wir nehmen uns Zeit für Ihre Anliegen und beraten Sie kompetent zu allen Fragen rund um Ihr Projekt.</p>
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <!-- Filter Buttons -->
+        <div class="gallery-filters reveal">
+            <button class="filter-btn active" data-filter="all">Alle Projekte</button>
+            <button class="filter-btn" data-filter="wandgestaltung">Wandgestaltung</button>
+            <button class="filter-btn" data-filter="fassade">Fassade</button>
+            <button class="filter-btn" data-filter="trockenbau">Trockenbau</button>
+            <button class="filter-btn" data-filter="sanierung">Sanierung</button>
+        </div>
 
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <div class="contact-card-icon rot">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </div>
-                        <div class="contact-card-content">
-                            <h3>Telefon</h3>
-                            <p>Rufen Sie uns direkt an</p>
-                            <a href="tel:+49XXXXXXXXXX">+49 XXX XXXXXXXX</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-card-icon blau">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div class="contact-card-content">
-                            <h3>E-Mail</h3>
-                            <p>Schreiben Sie uns</p>
-                            <a href="mailto:info@bg-bau.de">info@bg-bau.de</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-card-icon gelb">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <div class="contact-card-content">
-                            <h3>Adresse</h3>
-                            <p>Besuchen Sie uns</p>
-                            <a href="#">Musterstraße 123, 12345 Musterstadt</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-card-icon hellblau">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                            </svg>
-                        </div>
-                        <div class="contact-card-content">
-                            <h3>WhatsApp</h3>
-                            <p>Schnell & unkompliziert</p>
-                            <a href="#">Jetzt schreiben</a>
-                        </div>
-                    </div>
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <!-- Row 1 -->
+            <div class="gallery-item reveal" data-category="wandgestaltung" style="--aspect: 4/5;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Wandgestaltung<br>Wohnzimmer</span>
                 </div>
-
-                <div class="opening-hours">
-                    <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                        Öffnungszeiten
-                    </h3>
-                    <div class="hours-list">
-                        <div class="hours-item">
-                            <span class="day">Montag - Freitag</span>
-                            <span class="time">07:00 - 17:00 Uhr</span>
-                        </div>
-                        <div class="hours-item">
-                            <span class="day">Samstag</span>
-                            <span class="time">Nach Vereinbarung</span>
-                        </div>
-                        <div class="hours-item">
-                            <span class="day">Sonntag</span>
-                            <span class="time">Geschlossen</span>
-                        </div>
-                    </div>
+                <div class="gallery-overlay">
+                    <h3>Modernes Wohnzimmer</h3>
+                    <span>Wandgestaltung</span>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="contact-form-wrapper reveal">
-                <h2>Anfrage senden</h2>
-                <p>Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.</p>
+            <div class="gallery-item reveal" data-category="fassade" style="--aspect: 3/2;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Fassadensanierung<br>Einfamilienhaus</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Einfamilienhaus</h3>
+                    <span>Fassade</span>
+                </div>
+            </div>
 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name <span>*</span></label>
-                            <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-Mail <span>*</span></label>
-                            <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
-                        </div>
-                    </div>
+            <div class="gallery-item reveal" data-category="trockenbau" style="--aspect: 1/1;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Trockenbau<br>Dachausbau</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Dachgeschoss</h3>
+                    <span>Trockenbau</span>
+                </div>
+            </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+49 XXX XXXXXXXX">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Gewünschte Leistung</label>
-                            <select id="service" name="service">
-                                <option value="">Bitte wählen...</option>
-                                <option value="wandgestaltung">Wandgestaltung</option>
-                                <option value="fassade">Fassadengestaltung</option>
-                                <option value="trockenbau">Trockenbau</option>
-                                <option value="sanierung">Altbausanierung</option>
-                                <option value="innenausbau">Innenausbau</option>
-                                <option value="boden">Bodenverlegung</option>
-                                <option value="wdvs">WDVS</option>
-                                <option value="sonstiges">Sonstiges</option>
-                            </select>
-                        </div>
-                    </div>
+            <div class="gallery-item reveal" data-category="sanierung" style="--aspect: 4/3;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Altbausanierung<br>Jugendstil Villa</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Jugendstil Villa</h3>
+                    <span>Sanierung</span>
+                </div>
+            </div>
 
-                    <div class="form-group">
-                        <label for="message">Ihre Nachricht <span>*</span></label>
-                        <textarea id="message" name="message" placeholder="Beschreiben Sie Ihr Projekt oder stellen Sie Ihre Fragen..." required></textarea>
-                    </div>
+            <div class="gallery-item reveal" data-category="wandgestaltung" style="--aspect: 3/4;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Spachteltechnik<br>Schlafzimmer</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Elegantes Schlafzimmer</h3>
+                    <span>Wandgestaltung</span>
+                </div>
+            </div>
 
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="privacy" name="privacy" required>
-                        <label for="privacy">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color: var(--maler-rot);">*</span></label>
-                    </div>
+            <div class="gallery-item reveal" data-category="fassade" style="--aspect: 4/3;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>WDVS<br>Mehrfamilienhaus</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Mehrfamilienhaus</h3>
+                    <span>Fassade & WDVS</span>
+                </div>
+            </div>
 
-                    <button type="submit" class="btn-submit">
-                        Anfrage absenden
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 2L11 13"/>
-                            <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
-                        </svg>
-                    </button>
-                </form>
+            <div class="gallery-item reveal" data-category="trockenbau" style="--aspect: 16/9;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Abgehängte Decke<br>Büroräume</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Moderne Bürodecke</h3>
+                    <span>Trockenbau</span>
+                </div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="sanierung" style="--aspect: 3/4;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Stuckrestaurierung<br>Altbau</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Historischer Stuck</h3>
+                    <span>Sanierung</span>
+                </div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="wandgestaltung" style="--aspect: 4/3;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Akzentwand<br>Esszimmer</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Stilvolles Esszimmer</h3>
+                    <span>Wandgestaltung</span>
+                </div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="fassade" style="--aspect: 1/1;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Farbgestaltung<br>Reihenhaus</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Reihenhaus</h3>
+                    <span>Fassade</span>
+                </div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="trockenbau" style="--aspect: 4/5;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Raumteiler<br>Loft</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Loft Raumteiler</h3>
+                    <span>Trockenbau</span>
+                </div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="sanierung" style="--aspect: 3/2;">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Komplettsanierung<br>Bauernhaus</span>
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Bauernhaus</h3>
+                    <span>Sanierung</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="gallery-stats reveal">
+            <div class="stat-item">
+                <div class="stat-number">100<span>+</span></div>
+                <div class="stat-label">Projekte abgeschlossen</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15<span>k</span></div>
+                <div class="stat-label">m² Fläche bearbeitet</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100<span>%</span></div>
+                <div class="stat-label">Kundenzufriedenheit</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4<span>+</span></div>
+                <div class="stat-label">Jahre Erfahrung</div>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container reveal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Google Maps Integration</span>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container reveal">
+            <h2>Ihr Projekt könnte hier sein</h2>
+            <p>Lassen Sie sich inspirieren und kontaktieren Sie uns für Ihr nächstes Projekt. Wir freuen uns darauf, auch Ihre Räume zu verwandeln.</p>
+            <div class="cta-buttons">
+                <a href="/kontakt/" class="btn btn-primary">
+                    Projekt besprechen
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1062,7 +1041,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+        document.querySelectorAll('a, button, .gallery-item').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.style.transform = 'scale(2.5)';
                 cursor.style.background = 'var(--maler-gelb)';
@@ -1114,13 +1093,27 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.');
-            contactForm.reset();
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
         });
 
         // Hero Marker Animation
