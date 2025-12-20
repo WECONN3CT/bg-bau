@@ -557,14 +557,16 @@
             flex-direction: row-reverse;
         }
 
-        .timeline-item:nth-child(odd) .timeline-content {
+        .timeline-item:nth-child(odd) .timeline-content:first-child {
             text-align: right;
             padding-right: 3rem;
             padding-left: 0;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            padding-left: 3rem;
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            text-align: left;
+            padding-right: 3rem;
+            padding-left: 0;
         }
 
         .timeline-content {
@@ -1064,13 +1066,13 @@
             </div>
 
             <div class="timeline-item reveal">
-                <div class="timeline-content"></div>
-                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-year">2022</div>
                     <h3>Wachstum</h3>
                     <p>Das Team wächst auf vier Mitarbeiter. Erste große Sanierungsprojekte werden erfolgreich abgeschlossen.</p>
                 </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content"></div>
             </div>
 
             <div class="timeline-item reveal">
@@ -1084,13 +1086,13 @@
             </div>
 
             <div class="timeline-item reveal">
-                <div class="timeline-content"></div>
-                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-year">2024</div>
                     <h3>Heute</h3>
                     <p>Über 100 zufriedene Kunden und ein etablierter Ruf für Qualität und Zuverlässigkeit in der Region.</p>
                 </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content"></div>
             </div>
         </div>
     </section>
