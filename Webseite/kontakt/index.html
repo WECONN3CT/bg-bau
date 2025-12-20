@@ -577,24 +577,12 @@
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
-            height: 400px;
-            background: var(--soft-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 1rem;
         }
 
-        .map-container svg {
-            width: 48px;
-            height: 48px;
-            stroke: var(--maler-hellblau);
-            opacity: 0.5;
-        }
-
-        .map-container span {
-            color: var(--text-medium);
+        .map-container iframe {
+            display: block;
+            width: 100%;
+            height: 450px;
         }
 
         /* Footer */
@@ -864,7 +852,7 @@
                         <div class="contact-card-content">
                             <h3>Telefon</h3>
                             <p>Rufen Sie uns direkt an</p>
-                            <a href="tel:+49XXXXXXXXXX">+49 XXX XXXXXXXX</a>
+                            <a href="tel:+492282429889">+49 228 2429889</a>
                         </div>
                     </div>
 
@@ -878,7 +866,7 @@
                         <div class="contact-card-content">
                             <h3>E-Mail</h3>
                             <p>Schreiben Sie uns</p>
-                            <a href="mailto:info@bg-bau.de">info@bg-bau.de</a>
+                            <a href="mailto:info@bgbaumaler.de">info@bgbaumaler.de</a>
                         </div>
                     </div>
 
@@ -892,7 +880,7 @@
                         <div class="contact-card-content">
                             <h3>Adresse</h3>
                             <p>Besuchen Sie uns</p>
-                            <a href="#">Musterstraße 123, 12345 Musterstadt</a>
+                            <a href="https://maps.google.com/?q=Endenicher+Str.+355,+53121+Bonn" target="_blank">Endenicher Str. 355, 53121 Bonn</a>
                         </div>
                     </div>
 
@@ -955,7 +943,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+49 XXX XXXXXXXX">
+                            <input type="tel" id="phone" name="phone" placeholder="+49 228 2429889">
                         </div>
                         <div class="form-group">
                             <label for="service">Gewünschte Leistung</label>
@@ -998,11 +986,15 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="map-container reveal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Google Maps Integration</span>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.8881687395893!2d7.0685!3d50.7425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee19f4c6e8e8d%3A0x0!2sEndenicher%20Str.%20355%2C%2053121%20Bonn!5e0!3m2!1sde!2sde!4v1703000000000!5m2!1sde!2sde"
+                width="100%"
+                height="450"
+                style="border:0; border-radius: 20px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
