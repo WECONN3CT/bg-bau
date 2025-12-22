@@ -1939,44 +1939,49 @@
             </div>
             
             <div class="contact-form reveal">
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/mlgrpjjk" method="POST">
+                    <!-- Honeypot Spam-Schutz (für Bots unsichtbar) -->
+                    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+                    <!-- Formspree Konfiguration -->
+                    <input type="hidden" name="_subject" value="Neue Kontaktanfrage von BG BAU Webseite">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Ihr Name *</label>
-                            <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+                            <input type="text" id="name" name="name" placeholder="Max Mustermann" required minlength="2" maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+49 123 456789">
+                            <input type="tel" id="phone" name="phone" placeholder="+49 123 456789" pattern="[\+]?[0-9\s\-]{6,20}" title="Bitte geben Sie eine gültige Telefonnummer ein">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">E-Mail Adresse *</label>
-                        <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+                        <input type="email" id="email" name="email" placeholder="ihre@email.de" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Bitte geben Sie eine gültige E-Mail-Adresse ein">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="service">Gewünschte Leistung</label>
                         <select id="service" name="service">
                             <option value="">Bitte wählen...</option>
-                            <option value="wandgestaltung">Wandgestaltung</option>
-                            <option value="fassade">Fassadengestaltung</option>
-                            <option value="trockenbau">Trockenbau</option>
-                            <option value="altbau">Altbausanierung</option>
-                            <option value="innenausbau">Innenausbau</option>
-                            <option value="boden">Bodenverlegung</option>
-                            <option value="wdvs">WDVS</option>
-                            <option value="sonstiges">Sonstiges</option>
+                            <option value="Wandgestaltung">Wandgestaltung</option>
+                            <option value="Fassadengestaltung">Fassadengestaltung</option>
+                            <option value="Trockenbau">Trockenbau</option>
+                            <option value="Altbausanierung">Altbausanierung</option>
+                            <option value="Innenausbau">Innenausbau</option>
+                            <option value="Bodenverlegung">Bodenverlegung</option>
+                            <option value="WDVS">WDVS</option>
+                            <option value="Sonstiges">Sonstiges</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">Ihre Nachricht *</label>
-                        <textarea id="message" name="message" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..." required></textarea>
+                        <textarea id="message" name="message" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..." required minlength="10" maxlength="5000"></textarea>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary form-submit">
+
+                    <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
                         Nachricht senden
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="22" y1="2" x2="11" y2="13"/>
@@ -2295,22 +2300,65 @@
             }, 1200);
         }
 
-        // Form Submission
+        // Form Submission mit Validierung
         const contactForm = document.getElementById('contactForm');
-        
+        const submitBtn = document.getElementById('submitBtn');
+
+        // E-Mail Validierung
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        // Spam-Erkennung: Prüft ob Formular zu schnell ausgefüllt wurde
+        let formLoadTime = Date.now();
+
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would typically send the data to your server
-            console.log('Form submitted:', data);
-            
-            // Show success message (you can customize this)
-            alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.');
-            contactForm.reset();
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const honeypot = contactForm.querySelector('input[name="_gotcha"]').value;
+
+            // Honeypot-Prüfung (Bots füllen versteckte Felder aus)
+            if (honeypot) {
+                e.preventDefault();
+                return false;
+            }
+
+            // Zeitprüfung: Formular in unter 3 Sekunden ausgefüllt = wahrscheinlich Bot
+            if (Date.now() - formLoadTime < 3000) {
+                e.preventDefault();
+                alert('Bitte nehmen Sie sich einen Moment Zeit für das Formular.');
+                return false;
+            }
+
+            // E-Mail Validierung
+            if (!isValidEmail(email)) {
+                e.preventDefault();
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                document.getElementById('email').focus();
+                return false;
+            }
+
+            // Name Validierung (min. 2 Zeichen, keine reinen Zahlen)
+            if (name.trim().length < 2 || /^[0-9]+$/.test(name)) {
+                e.preventDefault();
+                alert('Bitte geben Sie einen gültigen Namen ein.');
+                document.getElementById('name').focus();
+                return false;
+            }
+
+            // Nachricht Validierung (min. 10 Zeichen)
+            if (message.trim().length < 10) {
+                e.preventDefault();
+                alert('Bitte beschreiben Sie Ihr Anliegen ausführlicher (mind. 10 Zeichen).');
+                document.getElementById('message').focus();
+                return false;
+            }
+
+            // Button-Text ändern während Absenden
+            submitBtn.innerHTML = 'Wird gesendet...';
+            submitBtn.disabled = true;
         });
 
         // Smooth Scroll for anchor links
