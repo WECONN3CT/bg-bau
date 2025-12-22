@@ -1228,6 +1228,57 @@
             justify-content: center;
         }
 
+        /* Erfolgs- und Fehlermeldungen */
+        .form-message {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-message.success {
+            display: flex;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .form-message.error {
+            display: flex;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .form-message svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .form-message.success svg {
+            stroke: #28a745;
+        }
+
+        .form-message.error svg {
+            stroke: #dc3545;
+        }
+
         /* ========== FOOTER ========== */
         .footer {
             background: var(--text-dark);
@@ -1988,6 +2039,15 @@
                             <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                         </svg>
                     </button>
+
+                    <!-- Erfolgs-/Fehlermeldung -->
+                    <div id="formMessage" class="form-message">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="messageIcon">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <span id="messageText"></span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -2300,9 +2360,15 @@
             }, 1200);
         }
 
-        // Form Submission mit Validierung
+        // Form Submission mit Validierung und AJAX
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        const messageText = document.getElementById('messageText');
+        const messageIcon = document.getElementById('messageIcon');
+
+        // Original Button-Inhalt speichern
+        const originalBtnContent = submitBtn.innerHTML;
 
         // E-Mail Validierung
         function isValidEmail(email) {
@@ -2310,48 +2376,60 @@
             return emailRegex.test(email);
         }
 
+        // Meldung anzeigen
+        function showMessage(type, text) {
+            formMessage.className = 'form-message ' + type;
+            messageText.textContent = text;
+
+            if (type === 'success') {
+                messageIcon.innerHTML = '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>';
+            } else {
+                messageIcon.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>';
+            }
+        }
+
         // Spam-Erkennung: Prüft ob Formular zu schnell ausgefüllt wurde
         let formLoadTime = Date.now();
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
             const message = document.getElementById('message').value;
             const honeypot = contactForm.querySelector('input[name="_gotcha"]').value;
 
+            // Meldung zurücksetzen
+            formMessage.className = 'form-message';
+
             // Honeypot-Prüfung (Bots füllen versteckte Felder aus)
             if (honeypot) {
-                e.preventDefault();
                 return false;
             }
 
             // Zeitprüfung: Formular in unter 3 Sekunden ausgefüllt = wahrscheinlich Bot
             if (Date.now() - formLoadTime < 3000) {
-                e.preventDefault();
-                alert('Bitte nehmen Sie sich einen Moment Zeit für das Formular.');
+                showMessage('error', 'Bitte nehmen Sie sich einen Moment Zeit für das Formular.');
                 return false;
             }
 
             // E-Mail Validierung
             if (!isValidEmail(email)) {
-                e.preventDefault();
-                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                showMessage('error', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.');
                 document.getElementById('email').focus();
                 return false;
             }
 
             // Name Validierung (min. 2 Zeichen, keine reinen Zahlen)
             if (name.trim().length < 2 || /^[0-9]+$/.test(name)) {
-                e.preventDefault();
-                alert('Bitte geben Sie einen gültigen Namen ein.');
+                showMessage('error', 'Bitte geben Sie einen gültigen Namen ein.');
                 document.getElementById('name').focus();
                 return false;
             }
 
             // Nachricht Validierung (min. 10 Zeichen)
             if (message.trim().length < 10) {
-                e.preventDefault();
-                alert('Bitte beschreiben Sie Ihr Anliegen ausführlicher (mind. 10 Zeichen).');
+                showMessage('error', 'Bitte beschreiben Sie Ihr Anliegen ausführlicher (mind. 10 Zeichen).');
                 document.getElementById('message').focus();
                 return false;
             }
@@ -2359,6 +2437,31 @@
             // Button-Text ändern während Absenden
             submitBtn.innerHTML = 'Wird gesendet...';
             submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(contactForm);
+
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showMessage('success', 'Vielen Dank! Ihre Kontaktanfrage wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei Ihnen.');
+                    contactForm.reset();
+                    formLoadTime = Date.now(); // Timer zurücksetzen
+                } else {
+                    throw new Error('Serverfehler');
+                }
+            } catch (error) {
+                showMessage('error', 'Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.');
+            } finally {
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+            }
         });
 
         // Smooth Scroll for anchor links
